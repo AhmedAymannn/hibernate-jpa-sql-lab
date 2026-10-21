@@ -16,8 +16,9 @@ public class Customer {
     private String city;
     private String tier;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Order> orders;
+
 
     public Customer() {}
 

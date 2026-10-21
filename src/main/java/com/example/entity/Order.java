@@ -1,4 +1,5 @@
 package com.example.entity;
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -55,6 +56,12 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{id=" + id + ", quantity=" + quantity + ", orderDate=" + orderDate + ", status='" + status + "'}";
+        // Safe toString: Print IDs instead of full object graphs to prevent recursion
+        return "Order{id=" + id +
+                ", customerId=" + (customer != null ? customer.getId() : null) +
+                ", productId=" + (product != null ? product.getId() : null) +
+                ", quantity=" + quantity +
+                ", orderDate=" + orderDate +
+                ", status='" + status + "'}";
     }
 }

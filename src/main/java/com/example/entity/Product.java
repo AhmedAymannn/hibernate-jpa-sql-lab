@@ -16,7 +16,7 @@ public class Product {
     private Double price;
     private Integer stock;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Order> orders;
 
     public Product() {}
@@ -48,6 +48,7 @@ public class Product {
 
     @Override
     public String toString() {
+        // Safe toString: Exclude 'orders' to prevent infinite loops
         return "Product{id=" + id + ", name='" + name + "', category='" + category + "', price=" + price + ", stock=" + stock + "}";
     }
 }
