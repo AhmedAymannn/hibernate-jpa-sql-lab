@@ -16,27 +16,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // 1. Initialize EntityManagerFactory and EntityManager
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myJpaUnit");
         EntityManager em = emf.createEntityManager();
 
         try {
-            // 2. Instantiate all DAOs, passing the shared EntityManager
+            // Instantiate DAOs
             CustomerDao customerDao = new CustomerDao(em);
             ProductDao productDao = new ProductDao(em);
             OrderDao orderDao = new OrderDao(em);
-            System.out.println("\n--- Successfully Initialized All DAOs! ---\n");
-            System.out.println("=======================================");
-            System.out.println("All Customers");
-            System.out.println("=======================================");
-            List <Customer> customers = customerDao.findAll();
-            customers.forEach(System.out::println);
-            System.out.println("=======================================");
-        } catch (Exception e) {
-            System.err.println("An error occurred: " + e.getMessage());
-            e.printStackTrace();
+
+            // Hand them over to your practice playground class
+            Runner runner = new Runner(customerDao, productDao, orderDao);
+            runner.startPractice();
+
         } finally {
-            // 4. Clean up resources
             em.close();
             emf.close();
         }
