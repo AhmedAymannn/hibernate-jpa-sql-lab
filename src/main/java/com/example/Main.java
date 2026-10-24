@@ -24,7 +24,7 @@ public class Main {
             ProductRunner productRunner = new ProductRunner(customerDao, productDao, orderDao);
             productRunner.startPractice();
 
-            
+
             CustomerRunner customerRunner = new CustomerRunner();
             customerRunner.startPractice();
         } finally {
